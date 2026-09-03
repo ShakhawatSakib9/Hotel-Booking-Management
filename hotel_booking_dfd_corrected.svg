@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="100%" height="100%" style="background-color: #ffffff; font-family: Arial, sans-serif;">
+  <defs>
+    <!-- Arrow marker for data flows -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d00000"/>
+    </marker>
+    <!-- Shadow filter for processes and entities -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1.5" dy="1.5" stdDeviation="2.5" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <path d="M 135 330 L 210 210" fill="none" stroke="#d00000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="165.0" y="274.0" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#333333">Search Query</text>
+  <path d="M 210 220 L 135 340" fill="none" stroke="#d00000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="165.0" y="304.0" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#333333">Results</text>
+  <path d="M 390 110 L 285 150" fill="none" stroke="#d00000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="337.5" y="122.0" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#333333">Fetch Data</text>
+  <path d="M 390 190 L 285 180" fill="none" stroke="#d00000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="337.5" y="197.0" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#333333">Fetch Data</text>
+  <path d="M 1025 120 L 705 110" fill="none" stroke="#d00000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="865.0" y="107.0" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#333333">Property Data</text>
+  <path d="M 615 90 L 550 90" fill="none" stroke="#d00000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="582.5" y="82.0" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#333333">Save Info</text>
+  <path d="M 615 120 L 530 170" fill="none" stroke="#d00000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="572.5" y="157.0" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#333333">Save Info</text>
+  <path d="M 135 350 L 615 350" fill="none" stroke="#d00000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="327.0" y="342.0" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#333333">Booking Req</text>
+  <path d="M 705 350 L 790 350" fill="none" stroke="#d00000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="747.5" y="342.0" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#333333">Record Booking</text>
+  <path d="M 135 370 L 210 500" fill="none" stroke="#d00000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="172.5" y="447.0" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#333333">Chat Msg</text>
+  <path d="M 275 500 L 1025 140" fill="none" stroke="#d00000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="650.0" y="308.0" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#333333">Route to Manager</text>
+  <path d="M 240 495 L 615 530" fill="none" stroke="#d00000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="390.0" y="501.0" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#333333">Update Sub</text>
+  <path d="M 705 540 L 790 540" fill="none" stroke="#d00000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="747.5" y="532.0" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#333333">Update Sub</text>
+  <path d="M 870 370 L 705 700" fill="none" stroke="#d00000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="787.5" y="523.0" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#333333">Read Bookings</text>
+  <path d="M 870 560 L 705 710" fill="none" stroke="#d00000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="804.0" y="632.0" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#333333">Read Users</text>
+  <path d="M 705 750 L 1025 750" fill="none" stroke="#d00000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="865.0" y="742.0" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#333333">Admin Reports</text>
+  <path d="M 680 775 L 1080 145" fill="none" stroke="#d00000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="820.0" y="566.5" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#333333">Manager Reports</text>
+  <rect x="380" y="50" width="410" height="200" fill="none" stroke="#b0b0b0" stroke-width="1.5" stroke-dasharray="5,5"/>
+  <text x="390" y="70" font-size="12" font-weight="bold" fill="#888888">Manager Interface</text>
+  <rect x="380" y="480" width="410" height="340" fill="none" stroke="#b0b0b0" stroke-width="1.5" stroke-dasharray="5,5"/>
+  <text x="390" y="500" font-size="12" font-weight="bold" fill="#888888">Admin Interface</text>
+  <rect x="25.0" y="325.0" width="110" height="50" fill="#ffffff" stroke="#000000" stroke-width="2" filter="url(#shadow)"/>
+  <text x="80" y="355" font-size="12" font-weight="bold" text-anchor="middle" fill="#000000">Customer</text>
+  <rect x="1025.0" y="95.0" width="110" height="50" fill="#ffffff" stroke="#000000" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1080" y="125" font-size="12" font-weight="bold" text-anchor="middle" fill="#000000">Manager</text>
+  <rect x="1025.0" y="725.0" width="110" height="50" fill="#ffffff" stroke="#000000" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1080" y="755" font-size="12" font-weight="bold" text-anchor="middle" fill="#000000">Admin</text>
+  <circle cx="240" cy="170" r="45" fill="#ffffff" stroke="#000000" stroke-width="2" filter="url(#shadow)"/>
+  <text x="240" y="150" font-size="11" font-weight="bold" text-anchor="middle" fill="#555555">1</text>
+  <text x="240" y="168" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#000000">Search</text>
+  <text x="240" y="182" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#000000">Listings</text>
+  <circle cx="660" cy="100" r="45" fill="#ffffff" stroke="#000000" stroke-width="2" filter="url(#shadow)"/>
+  <text x="660" y="80" font-size="11" font-weight="bold" text-anchor="middle" fill="#555555">2</text>
+  <text x="660" y="98" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#000000">Manage Hotels</text>
+  <text x="660" y="112" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#000000">&amp; Cars</text>
+  <circle cx="660" cy="350" r="45" fill="#ffffff" stroke="#000000" stroke-width="2" filter="url(#shadow)"/>
+  <text x="660" y="330" font-size="11" font-weight="bold" text-anchor="middle" fill="#555555">3</text>
+  <text x="660" y="348" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#000000">Process</text>
+  <text x="660" y="362" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#000000">Bookings</text>
+  <circle cx="660" cy="540" r="45" fill="#ffffff" stroke="#000000" stroke-width="2" filter="url(#shadow)"/>
+  <text x="660" y="520" font-size="11" font-weight="bold" text-anchor="middle" fill="#555555">4</text>
+  <text x="660" y="538" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#000000">Handle</text>
+  <text x="660" y="552" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#000000">Subscriptions</text>
+  <circle cx="240" cy="540" r="45" fill="#ffffff" stroke="#000000" stroke-width="2" filter="url(#shadow)"/>
+  <text x="240" y="520" font-size="11" font-weight="bold" text-anchor="middle" fill="#555555">5</text>
+  <text x="240" y="538" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#000000">Route Chat</text>
+  <text x="240" y="552" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#000000">Messages</text>
+  <circle cx="660" cy="730" r="45" fill="#ffffff" stroke="#000000" stroke-width="2" filter="url(#shadow)"/>
+  <text x="660" y="710" font-size="11" font-weight="bold" text-anchor="middle" fill="#555555">6</text>
+  <text x="660" y="728" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#000000">Generate</text>
+  <text x="660" y="742" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#000000">Reports</text>
+  <line x1="390.0" y1="80.0" x2="550.0" y2="80.0" stroke="#0000ff" stroke-width="2"/>
+  <line x1="390.0" y1="120.0" x2="550.0" y2="120.0" stroke="#0000ff" stroke-width="2"/>
+  <text x="470" y="104" font-size="11" font-weight="bold" text-anchor="middle" fill="#000000">D1 Hotels &amp; Rooms</text>
+  <line x1="390.0" y1="160.0" x2="550.0" y2="160.0" stroke="#0000ff" stroke-width="2"/>
+  <line x1="390.0" y1="200.0" x2="550.0" y2="200.0" stroke="#0000ff" stroke-width="2"/>
+  <text x="470" y="184" font-size="11" font-weight="bold" text-anchor="middle" fill="#000000">D2 Cars &amp; Travel</text>
+  <line x1="790.0" y1="330.0" x2="950.0" y2="330.0" stroke="#0000ff" stroke-width="2"/>
+  <line x1="790.0" y1="370.0" x2="950.0" y2="370.0" stroke="#0000ff" stroke-width="2"/>
+  <text x="870" y="354" font-size="11" font-weight="bold" text-anchor="middle" fill="#000000">D3 Bookings Master</text>
+  <line x1="790.0" y1="520.0" x2="950.0" y2="520.0" stroke="#0000ff" stroke-width="2"/>
+  <line x1="790.0" y1="560.0" x2="950.0" y2="560.0" stroke="#0000ff" stroke-width="2"/>
+  <text x="870" y="544" font-size="11" font-weight="bold" text-anchor="middle" fill="#000000">D4 Users &amp; Subs</text>
+</svg>

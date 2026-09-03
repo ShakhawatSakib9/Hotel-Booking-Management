@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="100%" height="100%" style="background-color: #ffffff; font-family: Arial, sans-serif;">
+  <defs>
+    <!-- Arrow markers -->
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1e3a5f"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d79b00"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2ca25f"/>
+    </marker>
+    <!-- Shadow filter -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  <path d="M 160 280 L 160 190 L 405 190" fill="none" stroke="#1e3a5f" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <text x="170" y="182" font-size="10.5" font-weight="bold" text-anchor="start" fill="#333333">Request (e.g., Click, Form Submit)</text>
+  <path d="M 635 190 L 880 190 L 880 260" fill="none" stroke="#1e3a5f" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <text x="870" y="182" font-size="10.5" font-weight="bold" text-anchor="end" fill="#333333">Passes Data</text>
+  <path d="M 490 260 L 490 390" fill="none" stroke="#1e3a5f" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <text x="480" y="325" font-size="10.5" font-weight="bold" text-anchor="end" fill="#333333">Request Data</text>
+  <path d="M 550 390 L 550 260" fill="none" stroke="#d79b00" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <text x="560" y="325" font-size="10.5" font-weight="bold" text-anchor="start" fill="#333333">Returns Data</text>
+  <path d="M 635 460 L 765 360" fill="none" stroke="#2ca25f" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <path d="M 825 400 L 825 560 L 160 560 L 160 380" fill="none" stroke="#2ca25f" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <text x="490" y="552" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#333333">Renders Response</text>
+  <path d="M 635 480 L 788 480" fill="none" stroke="#1e3a5f" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <text x="710" y="472" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#333333">SQL Query/Response</text>
+  <path d="M 790 500 L 637 500" fill="none" stroke="#1e3a5f" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <rect x="50" y="70" width="1100" height="540" rx="10" ry="10" fill="none" stroke="#b0b0b0" stroke-width="1.5" stroke-dasharray="6,6"/>
+  <text x="1130" y="95" font-size="12" font-weight="bold" text-anchor="end" fill="#888888">LARAVEL APPLICATION FRAMEWORK</text>
+  <g transform="translate(420, 620)">
+    <line x1="0" y1="0" x2="40" y2="0" stroke="#1e3a5f" stroke-width="2.5"/>
+    <text x="50" y="5" font-size="11" font-weight="bold" fill="#555555">Paths</text>
+    
+    <line x1="140" y1="0" x2="180" y2="0" stroke="#2ca25f" stroke-width="2.5"/>
+    <text x="190" y="5" font-size="11" font-weight="bold" fill="#555555">Request Data</text>
+    
+    <line x1="310" y1="0" x2="350" y2="0" stroke="#d79b00" stroke-width="2.5"/>
+    <text x="360" y="5" font-size="11" font-weight="bold" fill="#555555">Returns Data</text>
+  </g>
+  <rect x="70.0" y="280.0" width="180" height="100" rx="8" ry="8" fill="#ffffff" stroke="#1e3a5f" stroke-width="2" filter="url(#shadow)"/>
+  <text x="160" y="315" font-size="36" text-anchor="middle">👤💻</text>
+  <text x="160" y="360" font-size="12" font-weight="bold" text-anchor="middle" fill="#1e3a5f">USER INTERACTION</text>
+  <rect x="405.0" y="120.0" width="230" height="140" rx="6" ry="6" fill="#ffffff" stroke="#1e3a5f" stroke-width="2" filter="url(#shadow)"/>
+  <path d="M 405.0 150.0 L 405.0 126.0 A 6 6 0 0 1 411.0 120.0 L 629.0 120.0 A 6 6 0 0 1 635.0 126.0 L 635.0 150.0 Z" fill="#1e3a5f" stroke="none"/>
+  <text x="520" y="139.0" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#ffffff">CONTROLLER (Laravel Controller)</text>
+  <circle cx="425.0" cy="172.0" r="3" fill="#555555"/>
+  <text x="437.0" y="176.0" font-size="10.5" font-weight="bold" fill="#333333">Handles business logic</text>
+  <circle cx="425.0" cy="194.0" r="3" fill="#555555"/>
+  <text x="437.0" y="198.0" font-size="10.5" font-weight="bold" fill="#333333">Processes HTTP request</text>
+  <circle cx="425.0" cy="216.0" r="3" fill="#555555"/>
+  <text x="437.0" y="220.0" font-size="10.5" font-weight="bold" fill="#333333">Coordinates data flow</text>
+  <rect x="765.0" y="260.0" width="230" height="140" rx="6" ry="6" fill="#ffffff" stroke="#2ca25f" stroke-width="2" filter="url(#shadow)"/>
+  <path d="M 765.0 290.0 L 765.0 266.0 A 6 6 0 0 1 771.0 260.0 L 989.0 260.0 A 6 6 0 0 1 995.0 266.0 L 995.0 290.0 Z" fill="#2ca25f" stroke="none"/>
+  <text x="880" y="279.0" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#ffffff">VIEW (Blade Template)</text>
+  <circle cx="785.0" cy="312.0" r="3" fill="#555555"/>
+  <text x="797.0" y="316.0" font-size="10.5" font-weight="bold" fill="#333333">Renders UI/UX</text>
+  <circle cx="785.0" cy="334.0" r="3" fill="#555555"/>
+  <text x="797.0" y="338.0" font-size="10.5" font-weight="bold" fill="#333333">Presents data to user</text>
+  <circle cx="785.0" cy="356.0" r="3" fill="#555555"/>
+  <text x="797.0" y="360.0" font-size="10.5" font-weight="bold" fill="#333333">Uses Bootstrap</text>
+  <rect x="405.0" y="390.0" width="230" height="140" rx="6" ry="6" fill="#ffffff" stroke="#d79b00" stroke-width="2" filter="url(#shadow)"/>
+  <path d="M 405.0 420.0 L 405.0 396.0 A 6 6 0 0 1 411.0 390.0 L 629.0 390.0 A 6 6 0 0 1 635.0 396.0 L 635.0 420.0 Z" fill="#d79b00" stroke="none"/>
+  <text x="520" y="409.0" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#ffffff">MODEL (Eloquent ORM)</text>
+  <circle cx="425.0" cy="442.0" r="3" fill="#555555"/>
+  <text x="437.0" y="446.0" font-size="10.5" font-weight="bold" fill="#333333">Handles database interactions</text>
+  <circle cx="425.0" cy="464.0" r="3" fill="#555555"/>
+  <text x="437.0" y="468.0" font-size="10.5" font-weight="bold" fill="#333333">Retrieves/Stores data</text>
+  <circle cx="425.0" cy="486.0" r="3" fill="#555555"/>
+  <text x="437.0" y="490.0" font-size="10.5" font-weight="bold" fill="#333333">Eloquent ORM</text>
+  <rect x="790.0" y="445.0" width="180" height="110" rx="8" ry="8" fill="#ffffff" stroke="#1e3a5f" stroke-width="2" filter="url(#shadow)"/>
+  <path d="M 860 470 A 20 8 0 0 1 900 470 L 900 500 A 20 8 0 0 1 860 500 Z" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+  <ellipse cx="880" cy="470" rx="20" ry="8" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+  <ellipse cx="880" cy="480" rx="20" ry="8" fill="none" stroke="#6c8ebf" stroke-width="1.5"/>
+  <ellipse cx="880" cy="490" rx="20" ry="8" fill="none" stroke="#6c8ebf" stroke-width="1.5"/>
+  <text x="880" y="535" font-size="12" font-weight="bold" text-anchor="middle" fill="#1e3a5f">DATABASE</text>
+  <text x="600" y="45" font-size="22" font-weight="bold" text-anchor="middle" fill="#1e3a5f">LARAVEL View Controller (MVC)</text>
+</svg>

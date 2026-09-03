@@ -1,0 +1,179 @@
+# diagrams.net (draw.io) Import Code for Hotel Booking System ERD
+
+You can use either the Mermaid code or the SQL DDL code below to automatically generate the corrected ER diagram in diagrams.net (draw.io).
+
+---
+
+## Option 1: Mermaid Code (Recommended)
+This code will generate a modern, detailed Relational ERD directly.
+
+```mermaid
+erDiagram
+    ADMIN {
+        int Admin_ID PK
+        string Name
+        string Email
+        string Password
+    }
+
+    CUSTOMER {
+        int Cust_ID PK
+        string Name
+        string Email
+        string Phone
+        string Address
+        string NID
+        float Balance
+    }
+
+    HOTEL {
+        int Hotel_ID PK
+        string Name
+        string Location
+        float Rating
+        int Admin_ID FK
+    }
+
+    ROOM {
+        int Room_ID PK
+        string Room_No
+        float Price
+        string Room_Type
+        int Hotel_ID FK
+    }
+
+    BOOKING {
+        int Booking_ID PK
+        string Status
+        float Total_Price
+        date Check_In
+        date Check_Out
+        int Cust_ID FK
+        int Room_ID FK
+    }
+
+    PAYMENT {
+        string Trans_ID PK
+        string Method
+        float Amount
+        int Booking_ID FK
+    }
+
+    TRAVEL_PACKAGE {
+        int Pkg_ID PK
+        string Title
+        int Duration
+    }
+
+    CAR_RENTAL {
+        int Car_ID PK
+        string Brand_Model
+        float Price_Day
+    }
+
+    FEEDBACK {
+        int Feedback_ID PK
+        int Rating
+        string Comment
+        date Date
+        int Cust_ID FK
+        int Hotel_ID FK
+    }
+
+    ADMIN ||--o{ HOTEL : "manages"
+    HOTEL ||--|{ ROOM : "has"
+    CUSTOMER ||--o{ BOOKING : "makes"
+    ROOM ||--o{ BOOKING : "booked_in"
+    BOOKING ||--|| PAYMENT : "pays_for"
+    BOOKING }o--o| TRAVEL_PACKAGE : "includes"
+    BOOKING }o--o| CAR_RENTAL : "includes"
+    CUSTOMER ||--o{ FEEDBACK : "gives"
+    HOTEL ||--o{ FEEDBACK : "receives"
+```
+
+---
+
+## Option 2: SQL DDL Code
+This SQL code will generate standard relational table shapes with foreign keys connected.
+
+```sql
+CREATE TABLE Admin (
+    Admin_ID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Email VARCHAR(100),
+    Password VARCHAR(100)
+);
+
+CREATE TABLE Customer (
+    Cust_ID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Email VARCHAR(100),
+    Phone VARCHAR(20),
+    Address VARCHAR(255),
+    NID VARCHAR(20),
+    Balance DECIMAL(10,2)
+);
+
+CREATE TABLE Hotel (
+    Hotel_ID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Location VARCHAR(100),
+    Rating DECIMAL(2,1),
+    Admin_ID INT,
+    FOREIGN KEY (Admin_ID) REFERENCES Admin(Admin_ID)
+);
+
+CREATE TABLE Room (
+    Room_ID INT PRIMARY KEY,
+    Room_No VARCHAR(10),
+    Price DECIMAL(10,2),
+    Room_Type VARCHAR(50),
+    Hotel_ID INT,
+    FOREIGN KEY (Hotel_ID) REFERENCES Hotel(Hotel_ID)
+);
+
+CREATE TABLE Booking (
+    Booking_ID INT PRIMARY KEY,
+    Status VARCHAR(20),
+    Total_Price DECIMAL(10,2),
+    Check_In DATE,
+    Check_Out DATE,
+    Cust_ID INT,
+    Room_ID INT,
+    Pkg_ID INT,
+    Car_ID INT,
+    FOREIGN KEY (Cust_ID) REFERENCES Customer(Cust_ID),
+    FOREIGN KEY (Room_ID) REFERENCES Room(Room_ID)
+);
+
+CREATE TABLE Payment (
+    Trans_ID VARCHAR(50) PRIMARY KEY,
+    Method VARCHAR(50),
+    Amount DECIMAL(10,2),
+    Booking_ID INT,
+    FOREIGN KEY (Booking_ID) REFERENCES Booking(Booking_ID)
+);
+
+CREATE TABLE Travel_Package (
+    Pkg_ID INT PRIMARY KEY,
+    Title VARCHAR(100),
+    Duration INT
+);
+
+CREATE TABLE Car_Rental (
+    Car_ID INT PRIMARY KEY,
+    Brand_Model VARCHAR(100),
+    Price_Day DECIMAL(10,2)
+);
+
+CREATE TABLE Feedback (
+    Feedback_ID INT PRIMARY KEY,
+    Rating INT,
+    Comment TEXT,
+    Date DATE,
+    Cust_ID INT,
+    Hotel_ID INT,
+    FOREIGN KEY (Cust_ID) REFERENCES Customer(Cust_ID),
+    FOREIGN KEY (Hotel_ID) REFERENCES Hotel(Hotel_ID)
+);
+```

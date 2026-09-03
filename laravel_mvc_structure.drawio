@@ -1,0 +1,70 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="Page-1" name="Laravel MVC Structure">
+    <mxGraphModel dx="1414" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="node_2" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;fontSize=20;fontColor=#1e3a5f;" value="LARAVEL View Controller (MVC)" vertex="1">
+          <mxGeometry height="40" width="400" x="380" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="node_3" parent="1" style="fillColor=none;strokeColor=#b0b0b0;dashed=1;rounded=1;html=1;whiteSpace=wrap;verticalAlign=top;align=right;spacingRight=15;spacingTop=10;fontColor=#888888;strokeWidth=1.5;" value="LARAVEL APPLICATION FRAMEWORK" vertex="1">
+          <mxGeometry height="520" width="1070" x="50" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="node_4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1e3a5f;strokeWidth=2;align=center;verticalAlign=bottom;spacingBottom=10;fontStyle=1;fontSize=12;" value="USER INTERACTION" vertex="1">
+          <mxGeometry height="100" width="180" x="100" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="node_5" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=28;" value="👤💻" vertex="1">
+          <mxGeometry height="40" width="60" x="160" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="node_6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacingLeft=10;spacingTop=5;spacingRight=10;fillColor=#ffffff;strokeColor=#1e3a5f;" value="&lt;div style=&quot;text-align: center; font-weight: bold; background-color: #1e3a5f; color: white; padding: 6px; margin: -5px -10px 10px -10px; border-top-left-radius: 4px; border-top-right-radius: 4px; font-size: 12px;&quot;&gt;CONTROLLER (Laravel Controller)&lt;/div&gt;&#xa;&lt;ul style=&quot;margin: 0; padding-left: 15px; font-size: 11px; color: #333333; line-height: 1.4;&quot;&gt;&#xa;  &lt;li&gt;Handles business logic&lt;/li&gt;&#xa;  &lt;li&gt;Processes HTTP request&lt;/li&gt;&#xa;  &lt;li&gt;Coordinates data flow&lt;/li&gt;&#xa;&lt;/ul&gt;" vertex="1">
+          <mxGeometry height="160" width="230" x="420" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="node_7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacingLeft=10;spacingTop=5;spacingRight=10;fillColor=#ffffff;strokeColor=#2ca25f;" value="&lt;div style=&quot;text-align: center; font-weight: bold; background-color: #2ca25f; color: white; padding: 6px; margin: -5px -10px 10px -10px; border-top-left-radius: 4px; border-top-right-radius: 4px; font-size: 12px;&quot;&gt;VIEW (Blade Template)&lt;/div&gt;&#xa;&lt;ul style=&quot;margin: 0; padding-left: 15px; font-size: 11px; color: #333333; line-height: 1.4;&quot;&gt;&#xa;  &lt;li&gt;Renders UI/UX&lt;/li&gt;&#xa;  &lt;li&gt;Presents data to user&lt;/li&gt;&#xa;  &lt;li&gt;Uses Bootstrap&lt;/li&gt;&#xa;&lt;/ul&gt;" vertex="1">
+          <mxGeometry height="160" width="210" x="780" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="node_8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;align=left;verticalAlign=top;spacingLeft=10;spacingTop=5;spacingRight=10;fillColor=#ffffff;strokeColor=#d79b00;" value="&lt;div style=&quot;text-align: center; font-weight: bold; background-color: #d79b00; color: white; padding: 6px; margin: -5px -10px 10px -10px; border-top-left-radius: 4px; border-top-right-radius: 4px; font-size: 12px;&quot;&gt;MODEL (Eloquent ORM)&lt;/div&gt;&#xa;&lt;ul style=&quot;margin: 0; padding-left: 15px; font-size: 11px; color: #333333; line-height: 1.4;&quot;&gt;&#xa;  &lt;li&gt;Handles database interactions&lt;/li&gt;&#xa;  &lt;li&gt;Retrieves/Stores data&lt;/li&gt;&#xa;  &lt;li&gt;Eloquent ORM&lt;/li&gt;&#xa;&lt;/ul&gt;" vertex="1">
+          <mxGeometry height="160" width="230" x="420" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="node_9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1e3a5f;strokeWidth=2;align=center;verticalAlign=bottom;spacingBottom=10;fontStyle=1;fontSize=12;arcSize=7;" value="DATABASE" vertex="1">
+          <mxGeometry height="130" width="180" x="790" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="node_10" parent="1" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=1.5;" value="" vertex="1">
+          <mxGeometry height="50" width="40" x="860" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_11" edge="1" parent="1" source="node_4" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;rounded=0;strokeColor=#1e3a5f;strokeWidth=2;fontSize=10;fontStyle=1;exitX=0.5;exitY=0;entryX=0;entryY=0.5;" target="node_6" value="Request&#xa;(e.g., Click, Form Submit)">
+          <mxGeometry relative="1" y="-20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_12" edge="1" parent="1" source="node_6" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;rounded=0;strokeColor=#1e3a5f;strokeWidth=2;fontSize=10;fontStyle=1;exitX=1;exitY=0.5;entryX=0.5;entryY=0;" target="node_7" value="Passes Data">
+          <mxGeometry relative="1" x="-0.3455" y="-10" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_13" edge="1" parent="1" source="node_6" style="endArrow=block;html=1;rounded=0;strokeColor=#1e3a5f;strokeWidth=2;fontSize=10;fontStyle=1;exitX=0.3;exitY=1;entryX=0.3;entryY=0;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" target="node_8" value="Request Data">
+          <mxGeometry relative="1" x="-0.3333" y="-39" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_14" edge="1" parent="1" source="node_8" style="endArrow=block;html=1;rounded=0;strokeColor=#d79b00;strokeWidth=2;fontSize=10;fontStyle=1;exitX=0.7;exitY=0;entryX=0.7;entryY=1;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" target="node_6" value="Returns Data">
+          <mxGeometry relative="1" x="0.3333" y="41" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_15" edge="1" parent="1" source="node_8" style="curved=1;endArrow=block;html=1;rounded=0;strokeColor=#2ca25f;strokeWidth=2;fontSize=10;fontStyle=1;exitX=1;exitY=0.3;entryX=0;entryY=0.7;" target="node_7" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_16" edge="1" parent="1" source="node_7" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;rounded=0;strokeColor=#2ca25f;strokeWidth=2;fontSize=10;fontStyle=1;exitX=0.25;exitY=1;entryX=0.5;entryY=1;" target="node_4" value="Renders Response">
+          <mxGeometry relative="1" x="0.1459" y="-20" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_17" edge="1" parent="1" source="node_8" style="startArrow=block;endArrow=block;html=1;rounded=0;strokeColor=#003366;strokeWidth=2;fontSize=10;fontStyle=1;exitX=1;exitY=0.75;entryX=0;entryY=0.75;" target="node_9" value="SQL Query/Response">
+          <mxGeometry relative="1" x="-0.2115" y="32" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
