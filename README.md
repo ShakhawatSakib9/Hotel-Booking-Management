@@ -6,7 +6,7 @@
 [![WebSockets](https://img.shields.io/badge/Real--time-Pusher_WebSockets-00b4d8?style=for-the-badge)]()
 [![Status](https://img.shields.io/badge/Status-Active_Development-success?style=for-the-badge)]()
 
-> **A Laravel-based reservation platform with date-range conflict handling, real-time WebSocket communication, modular booking domains, and transactional pricing workflows — built with Laravel 12, PHP 8.2+, MySQL, Bootstrap 5, and Pusher WebSockets.**
+> **A Laravel-based hospitality operations platform combining room reservations, travel packages, vehicle rentals, real-time guest support, and transactional booking workflows — built with Laravel 12, PHP 8.2+, MySQL, Bootstrap 5, and Pusher WebSockets.**
 
 ---
 
@@ -16,13 +16,13 @@ Hotel Booking Management is a reservation and hospitality platform focusing on d
 
 ```
 Key Engineering Focus Areas:
-• Date-range room availability engine with mathematical booking overlap prevention
+• Date-range room availability engine with mathematical booking overlap detection
 • Transactional reservation workflows with historical add-on price snapshotting
 • Real-time bi-directional live chat communication using Pusher WebSockets
 • Role-based route authorization across Customer, Manager, and Admin roles
-• Modular multi-domain reservations (Hotel Rooms, Holiday Packages, Car Rentals)
+• Modular domain separation across Hotel Rooms, Holiday Packages, and Car Rentals
 • Tiered premium subscription system with automatic discount calculations during checkout
-• Architectural artifacts included: DFD Level 0/1, ERD schema, and Laravel MVC workflow diagrams
+• Embedded architectural artifacts: DFD Level 0/1, ERD schema, and Laravel MVC workflow diagrams
 ```
 
 ---
@@ -35,12 +35,12 @@ Key Engineering Focus Areas:
 4. [Implementation Status Matrix](#-implementation-status-matrix)
 5. [Room Booking & Date Overlap Engine](#-room-booking--date-overlap-engine)
 6. [Real-Time Live Chat Architecture](#-real-time-live-chat-architecture)
-7. [Multi-Domain Reservation Workflows](#-multi-domain-reservation-workflows)
+7. [Domain Separation: Rooms, Tours & Car Rentals](#-domain-separation-rooms-tours--car-rentals)
 8. [Premium Subscription & Discount Engine](#-premium-subscription--discount-engine)
 9. [Role-Based Access Control (RBAC)](#-role-based-access-control-rbac)
 10. [Key Engineering Challenges & Solutions](#-key-engineering-challenges--solutions)
-11. [Testing & Reliability](#-testing--reliability)
-12. [Database Schema & Entity Relationships](#-database-schema--entity-relationships)
+11. [Verification & Reliability](#-verification--reliability)
+12. [Database Schema & ERD Visualization](#-database-schema--erd-visualization)
 13. [Installation & Local Setup](#-installation--local-setup)
 14. [Author & Contributions](#-author--contributions)
 
@@ -100,11 +100,13 @@ graph TB
     ApplicationLayer --> PersistenceLayer
 ```
 
-> 📐 **Architectural Design Artifacts:** The repository includes complete SVG and Draw.io design diagrams:
-> - [`hotel_booking_dfd_lvl0_corrected.svg`](./hotel_booking_dfd_lvl0_corrected.svg) — Data Flow Diagram (Level 0)
-> - [`hotel_booking_dfd_lvl1_corrected.svg`](./hotel_booking_dfd_lvl1_corrected.svg) — Data Flow Diagram (Level 1)
-> - [`hotel_booking_erd_corrected.svg`](./hotel_booking_erd_corrected.svg) — Entity Relationship Diagram (ERD)
-> - [`laravel_mvc_structure.svg`](./laravel_mvc_structure.svg) — Laravel MVC Layered Architecture
+### 📐 Visual Architectural Artifacts
+
+#### 1. Laravel MVC Layered Architecture
+![Laravel MVC Structure](./laravel_mvc_structure.svg)
+
+#### 2. Data Flow Diagram (Level 0 & Level 1)
+![DFD Level 0](./hotel_booking_dfd_lvl0_corrected.svg)
 
 ---
 
@@ -113,9 +115,9 @@ graph TB
 | Architectural Decision | Chosen Approach | Rationale & Trade-offs |
 |---|---|---|
 | **Real-time Live Chat** | Pusher WebSocket Channels | Avoids continuous client-side HTTP polling, reducing server request load while providing near-real-time message delivery without continuous polling. |
-| **Date-Range Conflict Engine** | SQL Range Overlap Logic | Mathematical overlap check prevents conflicting reservations during room selection. |
+| **Date-Range Conflict Engine** | SQL Range Overlap Logic | Mathematical overlap check detects and rejects overlapping reservations during room selection. |
 | **Service Add-ons** | Relational Pivot Model (`BookingServices`) | Decouples add-on charges (spa, dining, airport pickup) from base room rates, preserving itemized billing auditability. |
-| **Multi-Domain Isolation** | Separate Domain Models (`Booking`, `TravelBooking`, `CarBooking`) | Keeps distinct booking lifecycles and metadata structures modular while sharing customer authentication and payment logic. |
+| **Domain Separation** | Dedicated Domain Models (`Booking`, `TravelBooking`, `CarBooking`) | Keeps distinct booking lifecycles and metadata structures modular while sharing customer authentication and payment logic. |
 | **Role-Based Authorization** | Custom Role Middleware (`role:admin,manager`) | Centralizes access rules at the routing boundary rather than scattering authorization checks throughout controllers. |
 
 ---
@@ -124,7 +126,7 @@ graph TB
 
 | Feature / Domain | Status | Technical Implementation Details |
 |---|:---:|---|
-| **Room Booking Engine** | ✅ **Implemented** | Date-range selection, nights calculation, and overlap prevention |
+| **Room Booking Engine** | ✅ **Implemented** | Date-range selection, nights calculation, and overlap detection |
 | **Add-on Services Bundling** | ✅ **Implemented** | Multi-service attachment with quantity and price snapshotting |
 | **Real-Time Live Chat** | ✅ **Implemented** | Pusher WebSockets with database message persistence and unread flags |
 | **Role-Based Authorization** | ✅ **Implemented** | Role-based middleware protecting Customer, Manager, and Admin routes |
@@ -138,7 +140,7 @@ graph TB
 
 ## 🧩 5. Room Booking & Date Overlap Engine
 
-### 1. Conflict Prevention Query
+### 1. Conflict Detection Query
 The reservation engine evaluates existing bookings for a requested room against incoming check-in and check-out dates using a mathematical range comparison:
 
 $$\text{Overlap Condition: } (\text{Existing Check-in} < \text{Requested Check-out}) \land (\text{Existing Check-out} > \text{Requested Check-in})$$
@@ -165,7 +167,7 @@ $isAvailable = !Booking::where('room_id', $roomId)
 
 ---
 
-## 🚗 7. Multi-Domain Reservation Workflows
+## 🚗 7. Domain Separation: Rooms, Tours & Car Rentals
 
 - **Hotel & Room Inventory:** Multi-property hotels with room types (Standard, Deluxe, Suite, Presidential) and JSON-casted amenities.
 - **Holiday Travel Packages:** Curated tour itineraries with destination highlights, duration, pricing, and group capacity.
@@ -206,10 +208,10 @@ graph TD
 
 ## 💡 10. Key Engineering Challenges & Solutions
 
-### Challenge 1: Date-Range Booking Conflict Prevention
+### Challenge 1: Date-Range Booking Overlap Detection
 **Problem:** Multiple customers selecting overlapping dates for the same room could create conflicting reservation attempts.
 
-**Solution:** Booking creation is executed within a database transaction with date-overlap validation queries and status verification to prevent conflicting reservations before committing the record.
+**Solution:** Booking creation evaluates date-overlap validation queries and status verification inside a database transaction to detect and reject overlapping reservations during booking creation.
 
 ---
 
@@ -227,25 +229,24 @@ graph TD
 
 ---
 
-## 🧪 11. Testing & Reliability
+## 🔍 11. Verification & Reliability
 
-Key test coverage areas for system verification:
+Key operational scenarios verified during development and system validation:
 
-- **Date Overlap Validation:** Boundary testing for same-day checkout/check-in transitions and overlapping date ranges.
+- **Date Overlap Detection:** Boundary validation for same-day checkout/check-in transitions and overlapping date ranges.
 - **Add-on Price Snapshotting:** Verifies that modifying service catalog prices does not alter historical booking totals.
 - **Subscription Discount Calculations:** Validates that Silver (5%) and Gold (10%) discounts compute accurately on combined room and service subtotals.
 - **Role Middleware Protection:** Asserts unauthorized access attempts are blocked for protected Customer, Manager, and Admin routes.
-- **Message Persistence:** Confirms chat messages save correctly to the database alongside real-time WebSocket dispatch.
-
-```bash
-# Run test suite
-php artisan test
-```
+- **Message Persistence & Dispatch:** Confirms chat messages save correctly to the database alongside real-time WebSocket dispatch.
 
 ---
 
-## 🗄️ 12. Database Schema & Entity Relationships
+## 🗄️ 12. Database Schema & ERD Visualization
 
+### Entity Relationship Diagram (ERD)
+![Hotel Booking ERD](./hotel_booking_erd_corrected.svg)
+
+### Relational Schema Summary
 ```
 hotels
     └── rooms (JSON amenities, pricing, status)
