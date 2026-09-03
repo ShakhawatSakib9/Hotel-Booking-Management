@@ -1,26 +1,26 @@
-# 🏨 Hotel Booking & Hospitality Management System
+# 🏨 Hotel Booking & Hospitality Operations Platform
 
 [![Laravel](https://img.shields.io/badge/Laravel_12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
 [![PHP](https://img.shields.io/badge/PHP_8.2+-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://www.php.net/)
 [![MySQL](https://img.shields.io/badge/MySQL_8.x-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
 [![WebSockets](https://img.shields.io/badge/Real--time-Pusher_WebSockets-00b4d8?style=for-the-badge)]()
-[![Status](https://img.shields.io/badge/Status-Production_Ready-success?style=for-the-badge)]()
+[![Status](https://img.shields.io/badge/Status-Active_Development-success?style=for-the-badge)]()
 
-> **A full-stack Hotel Booking & Hospitality Management platform built with Laravel 12, PHP 8.2+, MySQL, Bootstrap 5, and Pusher WebSockets — featuring real-time date-range room availability checking, add-on service bundling, travel package and car rental bookings, tiered premium subscription discounts, and live customer-staff chat.**
+> **A Laravel-based reservation platform with date-range conflict handling, real-time WebSocket communication, modular booking domains, and transactional pricing workflows — built with Laravel 12, PHP 8.2+, MySQL, Bootstrap 5, and Pusher WebSockets.**
 
 ---
 
 ## ⚡ Engineering Snapshot (60-Second Overview)
 
-Hotel Booking Management is a multi-vertical hospitality platform unifying room reservations, tour packages, car rentals, and real-time customer support into a single integrated Laravel application.
+Hotel Booking Management is a reservation and hospitality platform focusing on date-range availability algorithms, transactional booking integrity, real-time messaging, and multi-domain reservation pipelines.
 
 ```
 Key Engineering Focus Areas:
 • Date-range room availability engine with mathematical booking overlap prevention
-• Real-time bi-directional live chat support between guests and hotel staff using Pusher WebSockets
-• 3-Tier Role-Based Access Control: Customer → Hotel Manager → System Admin
-• Add-on service bundling (Spa, Dining, Gym, Room Service) via relational pivot models
-• Multi-vertical reservation system supporting Hotel Rooms, Tour Packages, and Car Rentals
+• Transactional reservation workflows with historical add-on price snapshotting
+• Real-time bi-directional live chat communication using Pusher WebSockets
+• Role-based route authorization across Customer, Manager, and Admin roles
+• Modular multi-domain reservations (Hotel Rooms, Holiday Packages, Car Rentals)
 • Tiered premium subscription system with automatic discount calculations during checkout
 • Architectural artifacts included: DFD Level 0/1, ERD schema, and Laravel MVC workflow diagrams
 ```
@@ -33,13 +33,13 @@ Key Engineering Focus Areas:
 2. [System Architecture & Visual Diagrams](#-system-architecture--visual-diagrams)
 3. [Engineering Decisions & Trade-offs](#-engineering-decisions--trade-offs)
 4. [Implementation Status Matrix](#-implementation-status-matrix)
-5. [Core Domain Modules](#-core-domain-modules)
-6. [Room Booking & Date Overlap Engine](#-room-booking--date-overlap-engine)
-7. [Real-Time Live Chat Architecture](#-real-time-live-chat-architecture)
-8. [Multi-Vertical Reservation System](#-multi-vertical-reservation-system)
-9. [Premium Subscription & Discount Engine](#-premium-subscription--discount-engine)
-10. [Role-Based Access Control (RBAC)](#-role-based-access-control-rbac)
-11. [Key Engineering Challenges & Solutions](#-key-engineering-challenges--solutions)
+5. [Room Booking & Date Overlap Engine](#-room-booking--date-overlap-engine)
+6. [Real-Time Live Chat Architecture](#-real-time-live-chat-architecture)
+7. [Multi-Domain Reservation Workflows](#-multi-domain-reservation-workflows)
+8. [Premium Subscription & Discount Engine](#-premium-subscription--discount-engine)
+9. [Role-Based Access Control (RBAC)](#-role-based-access-control-rbac)
+10. [Key Engineering Challenges & Solutions](#-key-engineering-challenges--solutions)
+11. [Testing & Reliability](#-testing--reliability)
 12. [Database Schema & Entity Relationships](#-database-schema--entity-relationships)
 13. [Installation & Local Setup](#-installation--local-setup)
 14. [Author & Contributions](#-author--contributions)
@@ -112,10 +112,10 @@ graph TB
 
 | Architectural Decision | Chosen Approach | Rationale & Trade-offs |
 |---|---|---|
-| **Real-time Live Chat** | Pusher WebSocket Channels | Avoids continuous client-side HTTP polling, reducing server request load while ensuring sub-second message delivery between guests and staff. |
-| **Date-Range Conflict Engine** | SQL Range Overlap Logic | Mathematical overlap check prevents double-booking rooms during concurrent customer reservation requests. |
+| **Real-time Live Chat** | Pusher WebSocket Channels | Avoids continuous client-side HTTP polling, reducing server request load while providing near-real-time message delivery without continuous polling. |
+| **Date-Range Conflict Engine** | SQL Range Overlap Logic | Mathematical overlap check prevents conflicting reservations during room selection. |
 | **Service Add-ons** | Relational Pivot Model (`BookingServices`) | Decouples add-on charges (spa, dining, airport pickup) from base room rates, preserving itemized billing auditability. |
-| **Multi-Vertical Isolation** | Separate Domain Models (`Booking`, `TravelBooking`, `CarBooking`) | Keeps distinct booking lifecycles and metadata structures modular while sharing customer authentication and payment logic. |
+| **Multi-Domain Isolation** | Separate Domain Models (`Booking`, `TravelBooking`, `CarBooking`) | Keeps distinct booking lifecycles and metadata structures modular while sharing customer authentication and payment logic. |
 | **Role-Based Authorization** | Custom Role Middleware (`role:admin,manager`) | Centralizes access rules at the routing boundary rather than scattering authorization checks throughout controllers. |
 
 ---
@@ -127,7 +127,7 @@ graph TB
 | **Room Booking Engine** | ✅ **Implemented** | Date-range selection, nights calculation, and overlap prevention |
 | **Add-on Services Bundling** | ✅ **Implemented** | Multi-service attachment with quantity and price snapshotting |
 | **Real-Time Live Chat** | ✅ **Implemented** | Pusher WebSockets with database message persistence and unread flags |
-| **3-Tier RBAC System** | ✅ **Implemented** | Role-based middleware protecting Customer, Manager, and Admin routes |
+| **Role-Based Authorization** | ✅ **Implemented** | Role-based middleware protecting Customer, Manager, and Admin routes |
 | **Travel & Tour Packages** | ✅ **Implemented** | Package catalog, date scheduling, passenger limits, and bookings |
 | **Car Rental Fleet** | ✅ **Implemented** | Vehicle inventory, daily rental rates, driver options, and bookings |
 | **Premium Membership Plans** | ✅ **Implemented** | Silver (5%) and Gold (10%) discount tiers automatically applied at checkout |
@@ -136,25 +136,45 @@ graph TB
 
 ---
 
-## 🧩 Core Domain Modules
+## 🧩 5. Room Booking & Date Overlap Engine
 
-### 1. 📅 Room Booking & Date Overlap Engine
-- **Conflict Prevention Query:** Evaluates existing bookings for a requested room against incoming check-in/check-out dates:
-  $$\text{Overlap Condition: } (\text{Existing Check-in} < \text{Requested Check-out}) \land (\text{Existing Check-out} > \text{Requested Check-in})$$
+### 1. Conflict Prevention Query
+The reservation engine evaluates existing bookings for a requested room against incoming check-in and check-out dates using a mathematical range comparison:
+
+$$\text{Overlap Condition: } (\text{Existing Check-in} < \text{Requested Check-out}) \land (\text{Existing Check-out} > \text{Requested Check-in})$$
+
+```php
+$isAvailable = !Booking::where('room_id', $roomId)
+    ->whereIn('status', ['confirmed', 'pending'])
+    ->where(function ($query) use ($checkIn, $checkOut) {
+        $query->where('check_in_date', '<', $checkOut)
+              ->where('check_out_date', '>', $checkIn);
+    })->exists();
+```
+
 - **Dynamic Nights Calculation:** Automatically computes duration of stay and applies tiered room rates.
 - **Booking Status State Machine:** `Pending` $\rightarrow$ `Confirmed` $\rightarrow$ `Completed` $\rightarrow$ `Rejected` / `Cancelled`.
 
-### 2. 💬 Real-Time Live Chat Architecture
-- **WebSockets Infrastructure:** Powered by Pusher channels with instant message delivery.
-- **Message Persistence:** All exchanges between customers and hotel managers are stored in the database (`messages` table).
-- **Context-Aware Chat:** Inquiries can link directly to a specific `booking_id` for instant staff reference.
+---
 
-### 3. 🚗 Multi-Vertical Reservation System
+## 💬 6. Real-Time Live Chat Architecture
+
+- **WebSockets Infrastructure:** Powered by Pusher channels to facilitate instant messaging between guests and hotel staff.
+- **Message Persistence:** All message payloads are stored in the database (`messages` table) with sender, receiver, and timestamp metadata.
+- **Context-Aware Inquiries:** Chat threads can link directly to a specific `booking_id` for instant reservation context.
+
+---
+
+## 🚗 7. Multi-Domain Reservation Workflows
+
 - **Hotel & Room Inventory:** Multi-property hotels with room types (Standard, Deluxe, Suite, Presidential) and JSON-casted amenities.
 - **Holiday Travel Packages:** Curated tour itineraries with destination highlights, duration, pricing, and group capacity.
 - **Car Rental Fleet:** Vehicle model, category (Sedan, SUV, Luxury), daily rate, and rental booking workflow.
 
-### 4. 💎 Premium Subscription & Discount Engine
+---
+
+## 💎 8. Premium Subscription & Discount Engine
+
 - **Subscription Tiers:**
   - 🥈 **Silver Tier:** 5% automatic discount on all room and service bookings.
   - 🥇 **Gold Tier:** 10% automatic discount on all room and service bookings.
@@ -162,7 +182,7 @@ graph TB
 
 ---
 
-## 🔐 Role-Based Access Control (RBAC)
+## 🔐 9. Role-Based Access Control (RBAC)
 
 ```mermaid
 graph TD
@@ -184,30 +204,47 @@ graph TD
 
 ---
 
-## 💡 Key Engineering Challenges & Solutions
+## 💡 10. Key Engineering Challenges & Solutions
 
-### Challenge 1: Preventing Double-Bookings Under Concurrent Traffic
-**Problem:** Multiple customers attempting to book the same room for overlapping dates simultaneously could cause double-allocations.
+### Challenge 1: Date-Range Booking Conflict Prevention
+**Problem:** Multiple customers selecting overlapping dates for the same room could create conflicting reservation attempts.
 
-**Solution:** Executed booking creation inside a database transaction with a strict date overlap validation query before committing the reservation record.
+**Solution:** Booking creation is executed within a database transaction with date-overlap validation queries and status verification to prevent conflicting reservations before committing the record.
 
 ---
 
 ### Challenge 2: Synchronizing Multi-Party Live Chat
-**Problem:** Guests requiring instant support needed a low-latency chat interface without polling the server repeatedly.
+**Problem:** Guests requiring instant support needed a reliable communication channel without polling the server repeatedly.
 
-**Solution:** Integrated Pusher WebSocket channels to broadcast message events in real time, while simultaneously storing message payloads in MySQL for permanent historical access.
-
----
-
-### Challenge 3: Itemized Add-on Pricing with Discount Inheritance
-**Problem:** Calculating total reservation costs with multiple dynamic add-on services (spa, meals, airport transfer) alongside tiered premium percentage discounts.
-
-**Solution:** Modeled add-ons through a `BookingServices` pivot table that captures unit price snapshots at booking time. The pricing pipeline applies percentage discounts across both room and service line totals predictably.
+**Solution:** Integrated Pusher WebSocket channels to broadcast message events in real time, while simultaneously storing message payloads in MySQL for permanent historical access and unread badge tracking.
 
 ---
 
-## 🗄️ Database Schema & Entity Relationships
+### Challenge 3: Itemized Add-on Pricing with Historical Snapshotting
+**Problem:** Room bookings frequently bundle dynamic add-ons (spa, meals, airport pickup). If service prices change in the catalog later, historical booking totals must remain unchanged.
+
+**Solution:** Modeled add-ons through a `BookingServices` pivot table that stores unit price snapshots at the exact moment of booking, guaranteeing billing auditability over time.
+
+---
+
+## 🧪 11. Testing & Reliability
+
+Key test coverage areas for system verification:
+
+- **Date Overlap Validation:** Boundary testing for same-day checkout/check-in transitions and overlapping date ranges.
+- **Add-on Price Snapshotting:** Verifies that modifying service catalog prices does not alter historical booking totals.
+- **Subscription Discount Calculations:** Validates that Silver (5%) and Gold (10%) discounts compute accurately on combined room and service subtotals.
+- **Role Middleware Protection:** Asserts unauthorized access attempts are blocked for protected Customer, Manager, and Admin routes.
+- **Message Persistence:** Confirms chat messages save correctly to the database alongside real-time WebSocket dispatch.
+
+```bash
+# Run test suite
+php artisan test
+```
+
+---
+
+## 🗄️ 12. Database Schema & Entity Relationships
 
 ```
 hotels
@@ -225,7 +262,7 @@ contact_messages
 
 ---
 
-## 💻 Tech Stack
+## 💻 13. Tech Stack
 
 | Layer | Technologies |
 |---|---|
@@ -233,12 +270,12 @@ contact_messages
 | **Database** | MySQL 8.x (InnoDB, Foreign Key Constraints, Transactions) |
 | **Real-time Engine** | Pusher WebSockets Channels |
 | **Frontend UI** | Blade Templates, Bootstrap 5, Vanilla JavaScript ES6+ |
-| **Authentication** | Laravel Breeze / Session-based Auth |
+| **Authentication** | Session-based Auth with Custom Role Middleware |
 | **Tooling** | Composer, NPM, Vite, Artisan CLI |
 
 ---
 
-## 🚀 Installation & Local Setup
+## 🚀 14. Installation & Local Setup
 
 ### Prerequisites
 - PHP `>= 8.2`
@@ -296,7 +333,7 @@ contact_messages
 
 ---
 
-## 👨‍💻 Author & Contributions
+## 👨‍💻 15. Author & Contributions
 
 **Developed by Shakhawat Sakib**  
 *Full-Stack Software Engineer · Laravel · PHP · MySQL · WebSockets*
